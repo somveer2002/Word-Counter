@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        body{
+            padding: 70px 150px;
+        }
+        h1{
+            text-align: center;
+            background-color: blueviolet;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+        textarea{
+            /* text-align: center; */
+            padding: 10px;
+            width: 99.3%;
+            font-size: 20px;
+            /* font-weight: bold; */
+            border-color: blueviolet;
+        }
+        p{
+            text-align: center;
+            background-color: blueviolet;
+            color: white;
+            padding: 10px;
+            font-size: larger
+        }
+        p span{
+            font-size: larger;
+            color: rgb(221, 255, 0);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Word Counter</h1>
+    <textarea id="textarea" cols="30" rows="10">
+
+    </textarea>
+    <p>
+        <span id="word">0</span> words and
+        <span id="char">0</span> characters
+    </p>
+
+    <script>
+        let textarea = document.getElementById('textarea');
+        textarea.addEventListener('input',function(){
+            let text = this.value;
+            // console.log(text.length);
+            let char = document.getElementById('char');
+            char.innerHTML=text.length;
+
+            text = text.trim();
+            let words= text.split(" ");
+            let validWords = words.filter(function(elm){
+                return (elm != "");
+            })
+
+            // console.log(validWords);
+
+            let word = document.getElementById('word');
+            word.innerHTML = validWords.length;
+        })
+        
+    </script>
+</body>
+</html>
